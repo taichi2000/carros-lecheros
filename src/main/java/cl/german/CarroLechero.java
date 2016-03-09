@@ -47,4 +47,19 @@ public class CarroLechero {
                 break;
         }
     }
+
+
+    public int getX() {
+        return x;
+    }
+
+
+    public int getY() {
+        return y;
+    }
+
+
+    public Cardinal getOrientation() {
+        return orientation;
+    }
 }

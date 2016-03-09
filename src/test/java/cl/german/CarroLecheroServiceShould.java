@@ -1,5 +1,6 @@
 package cl.german;
 
+
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
@@ -10,11 +11,17 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class CarroLecheroTest {
+
+public class CarroLecheroServiceShould {
+
+    private static final String CARROS_LECHEROS_INPUT_TXT = "/carros-lecheros-input.txt";
+    private static final String CARROS_LECHEROS_OUTPUT_TXT = "/carros-lecheros-output.txt";
+    private static final String CARROS_LECHEROS_EXPECTED_TXT = "/carros-lecheros-expected.txt";
+
 
     @Test
-    public void shouldProcessCarroLechero() throws Exception {
-        URL inputFileUrl = CarroLecheroTest.class.getResource("/carros-lecheros-input.txt");
+    public void processCarroLechero() throws Exception {
+        URL inputFileUrl = CarroLecheroServiceShould.class.getResource(CARROS_LECHEROS_INPUT_TXT);
 
         List<String> commands = FileUtils.readLines(FileUtils.toFile(inputFileUrl));
 
@@ -22,14 +29,15 @@ public class CarroLecheroTest {
 
         service.processCommands(commands);
 
-        URL outputFileURL = CarroLecheroTest.class.getResource("/carros-lecheros-output.txt");
+        URL outputFileURL = CarroLecheroServiceShould.class.getResource(CARROS_LECHEROS_OUTPUT_TXT);
         File outputFile = FileUtils.toFile(outputFileURL);
 
         assertTrue(isExpectedOutput(outputFile));
     }
 
+
     private boolean isExpectedOutput(File resultsFile) throws IOException {
-        URL expectedFileURL = CarroLecheroTest.class.getResource("/carros-lecheros-expected.txt");
+        URL expectedFileURL = CarroLecheroServiceShould.class.getResource(CARROS_LECHEROS_EXPECTED_TXT);
         File expectedFile = FileUtils.toFile(expectedFileURL);
 
         String resultsFileString = FileUtils.readFileToString(resultsFile);
