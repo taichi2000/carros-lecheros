@@ -62,4 +62,10 @@ public class CarroLechero {
     public Cardinal getOrientation() {
         return orientation;
     }
+
+
+    @Override
+    public String toString() {
+        return "" + x + " " + y + " " + orientation.name();
+    }
 }
